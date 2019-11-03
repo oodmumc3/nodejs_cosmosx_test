@@ -7,4 +7,4 @@ aws에 nodejs서버 구축하기
  - ctrl + shift + p  → git clone  git복제   사이트 → 내컴퓨터
  - ctrl + Enter → 커밋메세지적고 적용
  - 여러번 반복하다보면  커밋-> 풀-> 푸시
-11.ㅁㅁㅁ
+ - 부시 강제 배포님둥
