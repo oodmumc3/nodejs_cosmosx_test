@@ -15,3 +15,6 @@ PUTTY 이용하여 접속하기
 - 폰트설정 : Windows-Appearance-Font setting
 - 키경로 : Connection-SSH-Auth-Private key file for authentication
 → Puttyen 이용하여 키변경하기
+
+참고사이트
+- https://demun.github.io/vscode-tutorial/git/#git
