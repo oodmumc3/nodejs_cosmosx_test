@@ -18,3 +18,8 @@ PUTTY 이용하여 접속하기
 
 참고사이트
 - https://demun.github.io/vscode-tutorial/git/#git
+
+
+Guthub유의사항
+- 다운폴더 정확하게 지정하기111
+111
