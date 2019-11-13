@@ -29,8 +29,9 @@ Guthub유의사항
 
 Atlas 설정사항
 - 접속설정(포트) 후 접속계정 설정(아이디 비번) 접속주소를 받는다(종류별로
-- DB바로접속: mongodb+srv://아이디:비번@프로젝트명-pqydf.mongodb.net/프로젝트명?retryWrites=true&w=majority')
-  몽구스접속: mongodb+srv://아이디:비번@프로젝트명-pqydf.mongodb.net/db명?retryWrites=true&w=majority')
+- 몽구스접속: mongodb+srv://아이디:비번@프로젝트명-pqydf.mongodb.net/db명?retryWrites=true&w=majority')
+
+  DB바로접속: mongodb+srv://아이디:비번@프로젝트명-pqydf.mongodb.net/프로젝트명?retryWrites=true&w=majority')
 
 - 몽고DB 몽구스 버전에 따라 설정법이 다르니 꼭 참고하삼
 
