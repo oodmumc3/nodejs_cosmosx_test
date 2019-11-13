@@ -37,3 +37,4 @@ Atlas 설정사항
  ├── 몽고DB 2.x.x :
       ├── 2.x.x : 왠만한 시중교재는 이버전으로 설명
       ├── 3.3.4 : 내가 셋팅한 버전 → var db = client.db('데이터베이스 이름') //client는 function반환값
+                    database = mongoose.connection.openUri(databaseUrl,{useNewUrlParser: true });
