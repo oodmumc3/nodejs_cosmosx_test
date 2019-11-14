@@ -5,7 +5,7 @@
 
 module.exports = {
 	server_port: 3000,
-	db_url: 'mongodb+srv://admin:1111@costest-pqydf.mongodb.net/db_costest?retryWrites=true&w=majority',
+	db_url: 'mongodb+srv://계정:비먼@프로젝트명-pqydf.mongodb.net/DB명?retryWrites=true&w=majority',
 	db_schemas: [
 	    {file:'./user_schema', collection:'users6', schemaName:'UserSchema', modelName:'UserModel'}
 	],
