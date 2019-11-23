@@ -62,14 +62,37 @@ module.exports = function(router, passport) {
             console.dir(req.user);
 
             if (Array.isArray(req.user)) {
-                res.render('profile.ejs', {user: req.user[0]._doc},{login_success:true});
-            } else if (Array.isArray(req.user)) {
-                res.render('profile.ejs', {user: req.user},{login_success:true});
-            } else {           
-                res.render('profile.ejs', {login_success:true});
+                res.render('profile.ejs', {user: req.user[0]._doc}, {login_success:true});
+            } else {
+                res.render('profile.ejs', {user: req.user}, {login_success:true});
             }
-        }
+        }   
     });
+
+        // 프로필 화면
+        router.route('/P_profile').get(function(req, res) {
+            console.log('/P_profile 패스 요청됨.');
+    
+            // 인증된 경우, req.user 객체에 사용자 정보 있으며, 인증안된 경우 req.user는 false값임
+            console.log('req.user 객체의 값');
+            console.dir(req.user);
+    
+            // 인증 안된 경우
+            if (!req.user) {
+                console.log('사용자 인증 안된 상태임.');
+                res.redirect('/');
+            } else {
+                console.log('사용자 인증된 상태임.');
+                console.log('/P_profile 패스 요청됨.');
+                console.dir(req.user);
+    
+                if (Array.isArray(req.user)) {
+                    res.render('P_profile.ejs', {user: req.user[0]._doc});
+                } else {
+                    res.render('P_profile.ejs', {user: req.user});
+                }
+            }
+        });
 	
     // 로그아웃
     router.route('/logout').get(function(req, res) {
