@@ -14,20 +14,23 @@ module.exports = function(app, passport) {
 	return new kakaoStrategy({
 		clientID: config.kakao.clientID,
 		//clientSecret: config.kakao.clientSecret,
-		callbackURL: config.kakao.callbackURL
+		callbackURL: config.kakao.callbackURL,
+		profileFields: ['id', 'emails', 'displayName']
 	}, function(accessToken, refreshToken, profile, done) {
-		console.log('passport의 kakao 호출됨.');
 		console.dir(profile);
 		
 		var options = {
 		    criteria: { 'kakao.id': profile.id }
 		};
-		
+		console.log('★ passport의 kakao 호출됨 _var database.');
 		var database = app.get('database');
-	    database.UserModel.load(options, function (err, user) {
+		console.log('★ passport의 kakao 호출됨 _var database불러옴.');
+	    database.UserModel.find(options, function (err, user) {
+			console.log('★ passport의 kakao 호출됨 _var database내부.');
 			if (err) return done(err);
       
 			if (!user) {
+				console.log('★ passport의 kakao 호출됨 _!user.');
 				var user = new database.UserModel({
 					name: profile.displayName,
 					email: profile.emails[0].value,
@@ -35,7 +38,7 @@ module.exports = function(app, passport) {
 					authToken: accessToken,
 					kakao: profile._json
 				});
-        
+				console.log('★ passport의 kakao 호출됨 _user.save');
 				user.save(function (err) {
 					if (err) console.log(err);
 					return done(err, user);
