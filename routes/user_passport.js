@@ -23,9 +23,9 @@ module.exports = function(router, passport) {
         } else {
             console.log('사용자 인증된 상태임.');
             if (Array.isArray(req.user)) {
-                res.render('aaa.ejs', {user: req.user[0]._doc});
+                res.render('aaa.ejs', {user: req.user[0]._doc}, {login_success:true});
             } else if (Array.isArray(req.user)) {
-                res.render('aaa.ejs', {user: req.user});
+                res.render('aaa.ejs', {user: req.user}, {login_success:true});
             } else {           
                 res.render('aaa.ejs', {login_success:true});
             }
@@ -55,16 +55,18 @@ module.exports = function(router, passport) {
         // 인증 안된 경우
         if (!req.user) {
             console.log('사용자 인증 안된 상태임.');
-            res.redirect('/',{login_success:false});
+            res.redirect('/');
         } else {
             console.log('사용자 인증된 상태임.');
             console.log('/profile 패스 요청됨1111.');
             console.dir(req.user);
 
             if (Array.isArray(req.user)) {
-                res.render('profile.ejs', {user: req.user[0]._doc}, {login_success:true});
-            } else {
-                res.render('profile.ejs', {user: req.user}, {login_success:true});
+                res.render('profile.ejs', {user: req.user[0]._doc});
+                res.render('profile.ejs', {login_success:true});
+            } else  {
+                res.render('profile.ejs', {user: req.user});
+                res.render('profile.ejs',{login_success:true});
             }
         }   
     });
