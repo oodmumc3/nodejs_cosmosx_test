@@ -13,7 +13,7 @@ var config = require('../config');
 module.exports = function(app, passport) {
 	return new kakaoStrategy({
 		clientID: config.kakao.clientID,
-		clientSecret: config.kakao.clientSecret,
+		//clientSecret: config.kakao.clientSecret,
 		callbackURL: config.kakao.callbackURL
 	}, function(accessToken, refreshToken, profile, done) {
 		console.log('passport의 kakao 호출됨.');

@@ -2,33 +2,7 @@
 <html lang="ko">
 
 <head>
-    <!-- Custom styles for this template ▼ -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
-    <title>COSMOSX!!</title>
-    <link href="style.css" rel="stylesheet">
-    <!-- 부트스트랩 -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE8 에서 HTML5 요소와 미디어 쿼리를 위한 HTML5 shim 와 Respond.js -->
-    <!-- WARNING: Respond.js 는 당신이 file:// 을 통해 페이지를 볼 때는 동작하지 않습니다. -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
-    <!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom_bootstrap_menubar.js"></script>
-    <script src="js/tap.js"></script>
-    <!--헤더에는 기본적인 정보와 로고, 로그인, 계정조회창이 있음-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--▲어썸폰트 아이콘을 사용하기 위함 버전을 유지하기-->
-    
-    
+    <% include ./head.ejs %>
 </head>
 
 <body>
@@ -79,7 +53,25 @@
                                         <br>
                                         <input type="button" value="로그인 화면으로" onclick="location.href='/login';">
                                         <input type="button" value="아이디/비번찾기" onclick="location.href='main_login.html';">
-                                        
+
+                                        <a id="kakao-login-btn"></a>
+                                        <a href="https://kauth.kakao.com/oauth/authorize?client_id=dfe7e58f167ff549469dbd1eaf8cafd7&redirect_uri=http://localhost:52222/auth/kakao/callback&response_type=code"></a>
+                                        <script type='text/javascript'>
+                                          //<![CDATA[
+                                            // 사용할 앱의 JavaScript 키를 설정해 주세요.
+                                            Kakao.init('480028ac32883725fc0827a263956c67');
+                                            // 카카오 로그인 버튼을 생성합니다.
+                                            Kakao.Auth.createLoginButton({
+                                              container: '#kakao-login-btn',
+                                              success: function(authObj) {
+                                                alert(JSON.stringify(authObj));
+                                              },
+                                              fail: function(err) {
+                                                 alert(JSON.stringify(err));
+                                              }
+                                            });
+                                          //]]>
+                                        </script>
                                     </div>
                                  </div>
                             </div>

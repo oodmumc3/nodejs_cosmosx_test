@@ -28,8 +28,8 @@ module.exports = {
 	},
 
 	kakao: {		// passport kakaotalk
-		clientID: 'id',
-		clientSecret: 'secret',
-		callbackURL: '/auth/kakao/callback'
+		clientID: 'dfe7e58f167ff549469dbd1eaf8cafd7',
+		//clientSecret: 'n1Dwrot5ifHXs1evpdGlnHzEEe7bP0U1',
+		callbackURL: 'http://localhost:52222/auth/kakao/callback'
 	}
 }

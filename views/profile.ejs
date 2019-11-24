@@ -60,13 +60,13 @@
 													<strong>이름</strong>: <%= user.google.name %>
 												</p>
 
-												<% } else if (user.provider == 'kakaotalk' || login_success) { %>
-												<h3 class="text-primary"><span class="fa fa-kakaotalk"></span> kakaotalk 프로필</h3>
+												<% } else if (user.provider == 'kakao' || login_success) { %>
+												<h3 class="text-primary"><span class="fa fa-kakaotalk"></span> kakao 프로필</h3>
 												<br>
 												<p>
-													<strong>아이디</strong>: <%= user.kakaotalk.id %><br><br>
-													<strong>이메일</strong>: <%= user.kakaotalk.email %><br><br>
-													<strong>이름</strong>: <%= user.kakaotalk.name %>
+													<strong>아이디</strong>: <%= user.kakao.id %><br><br>
+													<strong>이메일</strong>: <%= user.kakao.email %><br><br>
+													<strong>이름</strong>: <%= user.kakao.name %>
 												</p>
 												<% } %>
 

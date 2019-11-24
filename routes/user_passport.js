@@ -78,7 +78,7 @@ module.exports = function(router, passport) {
         console.log('/logout 패스 요청됨. __개인정보 화면조회시');
         req.logout();
         res.redirect('/');
-        res.render('aaa.ejs', {login_success:false});
+        //res.render('aaa.ejs', {login_success:false});
     });
 
 
@@ -108,14 +108,11 @@ module.exports = function(router, passport) {
     }));
 
     // 패스포트 - kakaotalk 인증 라우팅 
-    router.route('/auth/kakao').get(passport.authenticate('kakao', { 
-    //추가코드
-    scope : 'email' 
-    }));
+    router.route('/auth/kakao').get(passport.authenticate('kakao'));
     
     // 패스포트 - kakaotalk 인증 콜백 라우팅
     router.route('/auth/kakao/callback').get(passport.authenticate('kakao', {
-    successRedirect : '/profile',
-    failureRedirect : '/'
+    successRedirect : '/',
+    failureRedirect : '/signup'
     }));
 };
