@@ -25,11 +25,11 @@ module.exports = {
 		clientID: 'id',
 		clientSecret: 'secret',
 		callbackURL: '/auth/google/callback'
-	}
+	},
 
-	kakaotalk: {		// passport kakaotalk
+	kakao: {		// passport kakaotalk
 		clientID: 'id',
 		clientSecret: 'secret',
-		callbackURL: '/auth/kakaotalk/callback'
+		callbackURL: '/auth/kakao/callback'
 	}
 }

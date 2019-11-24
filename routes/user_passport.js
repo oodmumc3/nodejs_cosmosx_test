@@ -112,13 +112,13 @@ module.exports = function(router, passport) {
     }));
 
     // 패스포트 - kakaotalk 인증 라우팅 
-    router.route('/auth/kakaotalk').get(passport.authenticate('kakaotalk', { 
+    router.route('/auth/kakao').get(passport.authenticate('kakao', { 
     //추가코드
     scope : 'email' 
     }));
     
     // 패스포트 - kakaotalk 인증 콜백 라우팅
-    router.route('/auth/kakaotalk/callback').get(passport.authenticate('kakaotalk', {
+    router.route('/auth/kakao/callback').get(passport.authenticate('kakao', {
     successRedirect : '/profile',
     failureRedirect : '/'
     }));
