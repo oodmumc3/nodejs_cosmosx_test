@@ -111,4 +111,15 @@ module.exports = function(router, passport) {
         failureRedirect : '/'
     }));
 
+    // 패스포트 - kakaotalk 인증 라우팅 
+    router.route('/auth/kakaotalk').get(passport.authenticate('kakaotalk', { 
+    //추가코드
+    scope : 'email' 
+    }));
+    
+    // 패스포트 - kakaotalk 인증 콜백 라우팅
+    router.route('/auth/kakaotalk/callback').get(passport.authenticate('kakaotalk', {
+    successRedirect : '/profile',
+    failureRedirect : '/'
+    }));
 };

@@ -1,3 +1,4 @@
+<div class="one_singup_info">
 <% if (!login_success) { %>
     <h1>지금 인증안됨 </h1>
     <input type="button" value="가입하기" onclick="location.href='/signup';">
@@ -9,6 +10,7 @@
     <input type="button" class="btn btn-secondary" value="로그아웃" onclick="location.href='/logout'">
     <input type="button" class="btn btn-secondary" value="개인정보" onclick="location.href='/profile'">
 <% } %>
+</div>
     <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
         <a class="navbar-brand" a href="#" onclick="location.href='/'">COSMOS X</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"

@@ -13,6 +13,7 @@ var local_signup = require('./passport/local_signup');
 var facebook = require('./passport/facebook');
 var twitter = require('./passport/twitter');
 var google = require('./passport/google');
+var kakaotalk = require('./kakaotalk/google');
 
 module.exports = function (app, passport) {
 	console.log('config/passport 호출됨.');
@@ -44,7 +45,8 @@ module.exports = function (app, passport) {
 	passport.use('local-signup', local_signup);
 	passport.use('facebook', facebook(app, passport));
 	passport.use('twitter', twitter(app, passport));
-	passport.use('google', google(app, passport));
-	console.log('5가지 passport 인증방식 설정됨.');
+    passport.use('google', google(app, passport));
+    passport.use('kakaotalk', kakaotalk(app, passport));
+	console.log('6가지 passport 인증방식 설정됨.');
 	
 };

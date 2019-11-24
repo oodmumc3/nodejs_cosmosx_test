@@ -103,6 +103,13 @@ footer {
     padding: 5px;
 }
 
+.one_singup_info {
+    background-color: yellowgreen;
+    padding: 50;
+    margin: 20;
+    width: 100%;
+}
+
 .two {
     float: none;
     margin: 0 auto;
