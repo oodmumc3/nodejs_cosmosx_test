@@ -8,13 +8,13 @@
 <body>
 	<div class="one">
 		<div class="two">
-			<% include ./menubar_basic.ejs %>
+            <% include ./menubar_2.ejs %>
 
 			<div class="container-fluid">
 				<div class="row">
 					<div class="topmain_full_one col-lg-12 col-sm-12">
 						<div class="row ">
-
+							
 							<div class="main_board_full_one_login col-lg-12 col-sm-12">
 								<!--본문 내용-->
 								<div class="row">
@@ -25,7 +25,7 @@
 										<a href="/logout" class="btn btn-default btn-sm">로그아웃</a>
 										<div class="col-sm-6">
 											<div class="well">
-
+												
 												<% if (user.provider == undefined || user.provider == ''|| login_success ) { %>
 												<h3><span class="fa fa-user"></span> 로컬 프로필</h3>
 												<br>

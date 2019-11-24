@@ -1,6 +1,14 @@
-
-
-<input type="button" class="btn btn-secondary" value="로그아웃" onclick="location.href='/logout'">
+<% if (!user) { %>
+    <h1>지금 인증안됨 </h1>
+    <input type="button" value="가입하기" onclick="location.href='/signup';">
+    <input type="button" value="로그인" onclick="location.href='/login'">
+    <input type="button" value="아이디/비번찾기" onclick="location.href='main_login.html';">
+    
+<% } else if (user) { %>
+    <h3>지금 인증됨</h3>
+    <input type="button" class="btn btn-secondary" value="로그아웃" onclick="location.href='/logout'">
+    <input type="button" class="btn btn-secondary" value="개인정보" onclick="location.href='/profile'">
+<% } %>
 
     <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
          <a class="navbar-brand" a href="#" onclick="location.href='/'">COSMOS X</a>
