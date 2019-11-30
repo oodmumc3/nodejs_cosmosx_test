@@ -10,28 +10,50 @@
 var kakaoStrategy = require('passport-kakao').Strategy;
 var config = require('../config');
 
-module.exports = function(app, passport) {
+
+
+module.exports = function (app, passport) {
 	return new kakaoStrategy({
 		clientID: config.kakao.clientID,
 		//clientSecret: config.kakao.clientSecret,
 		callbackURL: config.kakao.callbackURL,
-		profileFields: ['id', 'emails', 'displayName']
-	}, function(accessToken, refreshToken, profile, done) {
-		console.dir(profile);
 		
-		var options = {
-		    criteria: { 'kakao.id': profile.id }
-		};
+	}, function (accessToken, refreshToken, profile, done) {
+		console.dir(profile);
+
+
 		console.log('★ passport의 kakao 호출됨 _var database.');
 		var database = app.get('database');
 		console.log('★ passport의 kakao 호출됨 _var database불러옴.');
-	    database.UserModel.find(options, function (err, user) {
+		//var code = req.query.code;
+
+		var options = {
+			criteria: { 'kakao.id': profile.id},
+			url: "https://kauth.kakao.com/oauth/token",
+			method: 'POST',
+			headers: {
+				'User-Agent': 'Super Agent/0.0.1',
+				'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+			},
+			form: {
+			  grant_type: "authorization_code",
+			  client_id: config.kakao.clientID,
+			  redirect_uri: config.kakao.callbackURL,
+			  code: accessToken
+			}
+		}
+
+		database.UserModel.find(options, function (err, user) {
 			console.log('★ passport의 kakao 호출됨 _var database내부.');
+	
+		  
+			
+
 			if (err) return done(err);
-      
+
 			if (!user) {
 				console.log('★ passport의 kakao 호출됨 _!user.');
-				var user = new database.UserModel({
+				var user = new database.UserModel_kakao({
 					name: profile.displayName,
 					email: profile.emails[0].value,
 					provider: 'kakao',
@@ -46,6 +68,16 @@ module.exports = function(app, passport) {
 			} else {
 				return done(err, user);
 			}
-	    });
+		});
+
+
 	});
+
+
+
 };
+
+
+
+
+

@@ -107,8 +107,13 @@ module.exports = function(router, passport) {
         failureRedirect : '/'
     }));
 
+    //라우팅 정보를 읽어들여 라우팅 설정
+    //var router = express.Router();
+    //var code = req.query.code;
     // 패스포트 - kakaotalk 인증 라우팅 
-    router.route('/auth/kakao').get(passport.authenticate('kakao'));
+    router.route('/auth/kakao').get(passport.authenticate('kakao', {
+    }));
+    
     
     // 패스포트 - kakaotalk 인증 콜백 라우팅
     router.route('/auth/kakao/callback').get(passport.authenticate('kakao', {

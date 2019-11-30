@@ -7,7 +7,8 @@ module.exports = {
 	server_port: 3000,
 	db_url: 'mongodb+srv://admin:1111@costest-pqydf.mongodb.net/db_costest?retryWrites=true&w=majority',
 	db_schemas: [
-	    {file:'./user_schema', collection:'users6', schemaName:'UserSchema', modelName:'UserModel'}
+		{file:'./user_schema', collection:'users6', schemaName:'UserSchema', modelName:'UserModel'},
+		{file:'./user_schema_kakao', collection:'users6', schemaName:'UserModel_kakao', modelName:'UserModel_kakao'}
 	],
 	route_info: [
 	],
