@@ -14,6 +14,8 @@
     "express": "^4.14.0",
     "express-error-handler": "^1.1.0",
     "express-session": "^1.14.2",
+    "greenlock-express": "^3.1.1",
+    "letsencrypt": "^2.1.10",
     "mongoose": "^5.7.10",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",

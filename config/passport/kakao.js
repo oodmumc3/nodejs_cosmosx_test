@@ -17,7 +17,6 @@ module.exports = function (app, passport) {
 		clientID: config.kakao.clientID,
 		//clientSecret: config.kakao.clientSecret,
 		callbackURL: config.kakao.callbackURL,
-		
 	}, function (accessToken, refreshToken, profile, done) {
 		console.dir(profile);
 
@@ -43,20 +42,15 @@ module.exports = function (app, passport) {
 			}
 		}
 
-		database.UserModel.find(options, function (err, user) {
+		database.UserModel.findOne(options, function (err, user) {
 			console.log('★ passport의 kakao 호출됨 _var database내부.');
 	
-		  
-			
-
 			if (err) return done(err);
-
+			console.log('★ passport의 kakao 호출됨 에러남.');
 			if (!user) {
 				console.log('★ passport의 kakao 호출됨 _!user.');
-				var user = new database.UserModel_kakao({
-					name: profile.displayName,
-					email: profile.emails[0].value,
-					provider: 'kakao',
+				var user = new database.UserModel({
+					name : profile.id,
 					authToken: accessToken,
 					kakao: profile._json
 				});
@@ -67,6 +61,7 @@ module.exports = function (app, passport) {
 				});
 			} else {
 				return done(err, user);
+				console.log('★ passport의 kakao 호출됨 없어서 에러남.');
 			}
 		});
 

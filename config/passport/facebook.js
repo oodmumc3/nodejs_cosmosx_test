@@ -14,17 +14,24 @@ module.exports = function(app, passport) {
 	return new FacebookStrategy({
 		clientID: config.facebook.clientID,
 		clientSecret: config.facebook.clientSecret,
-		callbackURL: config.facebook.callbackURL
+		callbackURL: config.facebook.callbackURL,
+		profileFields: ['id', 'emails', 'displayName']
 	}, function(accessToken, refreshToken, profile, done) {
 		console.log('passport의 facebook 호출됨.');
 		console.dir(profile);
 		
 		var options = {
-		    criteria: { 'facebook.id': profile.id }
+			criteria: { 'facebook.id': profile.id },
+			form: {
+				grant_type: "authorization_code",
+				client_id: config.facebook.clientID,
+				redirect_uri: config.facebook.callbackURL,
+				code: accessToken
+			  }
 		};
 		
 		var database = app.get('database');
-	    database.UserModel.load(options, function (err, user) {
+	    database.UserModel.findOne(options, function (err, user) {
 			if (err) return done(err);
       
 			if (!user) {

@@ -1,12 +1,12 @@
 <div class="one_singup_info">
 <% if (!login_success) { %>
-    <h1>지금 인증안됨 </h1>
+    <h1>지금 인증안됨_login_success </h1>
     <input type="button" value="가입하기" onclick="location.href='/signup';">
     <input type="button" value="로그인" onclick="location.href='/login'">
     <input type="button" value="아이디/비번찾기" onclick="location.href='main_login.html';">
     
 <% } else if (login_success) { %>
-    <h3>지금 인증됨</h3>
+    <h3>지금 인증됨_login_success</h3>
     <input type="button" class="btn btn-secondary" value="로그아웃" onclick="location.href='/logout'">
     <input type="button" class="btn btn-secondary" value="개인정보" onclick="location.href='/profile'">
 <% } %>
