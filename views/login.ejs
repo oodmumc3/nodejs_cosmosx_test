@@ -40,30 +40,10 @@
                                                 
                                             </form>
                                             <form method="get" action="/auth/kakao/"></form>
-                                            
-                                            <button class="btn btn-warning" value="카카오가입" name="" href="http://localhost:52222/auth/kakao/authorize?client_id=dfe7e58f167ff549469dbd1eaf8cafd7&redirect_uri=http://localhost:52222/auth/kakao/callback&response_type=code">카카오가입_장문<i class="fa fa-btc"></i></button>
                                             </form>
-                                            <button class="btn btn-warning" value="카카오가입" name="" onclick="location.href='/auth/kakao/'">카카오가입_단버튼<i class="fa fa-btc"></i></button>
-                                            <button class="btn btn-warning" value="카카오가입" name="" href="http://localhost:52222/auth/kakao/authorize?client_id=dfe7e58f167ff549469dbd1eaf8cafd7&redirect_uri=http://localhost:52222/auth/kakao/callback&response_type=code">카카오가입_폼외문<i class="fa fa-btc"></i></button>
+                                            <button  class="btn btn-warning" value="카카오가입" name="" onclick="location.href='/auth/kakao/'">카카오로그인<i class="fa fa-btc"></i></button>
+                                            <!--AWS <button  class="btn btn-warning" value="카카오가입" name="" onclick="location.href='/auth/kakao/'">카카오가입_단버튼<i class="fa fa-btc"></i></button>-->
                                             <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> 페이스북으로 로그인</a>
-                                            <a id="kakao-login-btn"></a>
-                                            <a href="http://developers.kakao.com/logout"></a>
-                                            <script type='text/javascript'>
-                                                //<![CDATA[
-                                                // 사용할 앱의 JavaScript 키를 설정해 주세요.
-                                                Kakao.init('480028ac32883725fc0827a263956c67');
-                                                // 카카오 로그인 버튼을 생성합니다.
-                                                Kakao.Auth.createLoginButton({
-                                                    container: '#kakao-login-btn',
-                                                    success: function (authObj) {
-                                                        alert(JSON.stringify(authObj));
-                                                    },
-                                                    fail: function (err) {
-                                                        alert(JSON.stringify(err));
-                                                    }
-                                                });
-                                                //]]>
-                                            </script>
                                         </div>
 
                                     </div>
