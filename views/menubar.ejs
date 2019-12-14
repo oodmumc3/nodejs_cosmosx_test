@@ -1,5 +1,6 @@
 <div class="one_singup_info">
 <% if (!login_success) { %>
+     <!-- if (!user) { 주석 사용안됨-->
     <h1>지금 인증안됨_login_success </h1>
     <input type="button" value="가입하기" onclick="location.href='/signup';">
     <input type="button" value="로그인" onclick="location.href='/login'">
@@ -9,6 +10,35 @@
     <h3>지금 인증됨_login_success</h3>
     <input type="button" class="btn btn-secondary" value="로그아웃" onclick="location.href='/logout'">
     <input type="button" class="btn btn-secondary" value="개인정보" onclick="location.href='/profile'">
+    <% if (user.provider == undefined || user.provider == '') { %>
+            <strong>이메일</strong>: <%= user.email %> <strong> / </strong>
+            <strong>별명</strong>: <%= user.name %>
+        </p>
+    <% } else if (user.provider == 'facebook') { %>
+        <h3 class="text-primary"><span class="fa fa-facebook"></span> 페이스북 프로필</h3>
+            <strong>아이디</strong>: <%= user.facebook.id %><strong> / </strong>>
+            <strong>이메일</strong>: <%= user.facebook.email %><strong> / </strong>
+            <strong>이름</strong>: <%= user.facebook.name %>
+        </p>
+    <% } else if (user.provider == 'twitter') { %>
+        <h3 class="text-primary"><span class="fa fa-twitter"></span> 트위터 프로필</h3>
+            <strong>아이디</strong>: <%= user.twitter.id %><strong> / </strong>
+            <strong>이메일</strong>: <%= user.twitter.email %><strong> / </strong>
+            <strong>이름</strong>: <%= user.twitter.name %>
+        </p>
+    <% } else if (user.provider == 'google') { %>
+        <h3 class="text-primary"><span class="fa fa-google"></span> 구글 프로필</h3>
+            <strong>아이디</strong>: <%= user.google.id %><strong> / </strong>
+            <strong>이메일</strong>: <%= user.google.email %><strong> / </strong>
+            <strong>이름</strong>: <%= user.google.name %>
+        </p>
+    <% } else if (user.provider == 'kakao') { %>
+        <h3 class="text-primary"><span class="fa fa-kakao"></span> kakao 프로필</h3>
+            <strong>아이디</strong>: <%= user.kakao.id %><strong> / </strong>
+            <strong>name</strong>: <%= user.name %><strong> / </strong>
+            <strong>nickname</strong>: <%= user.nickname %>
+        </p>      
+    <% } %>
 <% } %>
 </div>
     <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">

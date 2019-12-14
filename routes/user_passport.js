@@ -16,16 +16,19 @@ module.exports = function(router, passport) {
         // 인증 안된 경우
         if (!req.user) {
             console.log('사용자 인증 안된 상태임. __홈 화면조회시');
-            res.render('aaa.ejs', {login_success:false});
+            res.render('index.ejs', {login_success:false});
 
         } else {
-            console.log('사용자 인증된 상태임. __홈 화면조회시');
+            console.log('사용자 인증된 상태임. __홈 화면조회시_else');
+            console.dir(req.user.provider);
             if (Array.isArray(req.user)) {
-                res.render('aaa.ejs', {user: req.user[0]._doc}, {login_success:true});
-            } else if (Array.isArray(req.user)) {
-                res.render('aaa.ejs', {user: req.user}, {login_success:true});
-            } else {           
-                res.render('aaa.ejs', {login_success:true});
+                res.render('aaa.ejs', {user: req.user[0]._doc, login_success:true});
+                console.dir(req.user);
+                console.log('사용자 인증된 상태임. __홈 화면조회시_1111');
+            } else  {
+                res.render('aaa.ejs', {user: req.user, login_success:true});
+                console.dir(req.user);
+                console.log('사용자 인증된 상태임. __홈 화면조회시_2222');
             }
         }        
     });
@@ -34,10 +37,10 @@ module.exports = function(router, passport) {
     router.route('/login').get(function(req, res) {
         console.log('/login 패스 요청됨. __로그인 화면조회시');
         if (req.user) {
-            console.log('사용자 인증 된 상태임. __로그인 화면조회시');
+            console.log('사용자 인증 된 상태. __로그인 화면조회시_if');
             res.redirect('/');
         } else {
-            console.log('사용자 인증 안된 상태임. __로그인 화면조회시');
+            console.log('사용자 인증 안된 상태. __로그인 화면조회시_else');
             res.render('login.ejs', {message: req.flash('loginMessage')});
         }
     });
@@ -61,13 +64,14 @@ module.exports = function(router, passport) {
             res.redirect('/');
         } else {
             console.log('사용자 인증된 상태임. __개인정보 화면조회시');
-            console.log('/profile 패스 요청됨. __개인정보 화면조회시');
 
             if (Array.isArray(req.user)) {
-                res.render('profile.ejs', {user: req.user[0]._doc});
+                res.render('profile.ejs', {user: req.user[0]._doc, login_success:true});
+                console.log('/profile 패스 요청됨. __개인정보 화면조회시_if arry');
                 //res.render('profile.ejs', {login_success:true});
             } else  {
-                res.render('profile.ejs', {user: req.user});
+                res.render('profile.ejs', {user: req.user, login_success:true});
+                console.log('/profile 패스 요청됨. __개인정보 화면조회시 없음arry');
                 //res.render('profile.ejs', {login_success:true});
             }
         }   
@@ -83,11 +87,12 @@ module.exports = function(router, passport) {
 
 
     // 로그인 인증
-    router.route('/').post(passport.authenticate('local-login', {  
+    router.route('/login').post(passport.authenticate('local-login', {  
         successRedirect : '/', 
         failureRedirect : '/login', 
         failureFlash : true 
     }));
+
 
     // 회원가입 인증
     router.route('/signup').post(passport.authenticate('local-signup', {
