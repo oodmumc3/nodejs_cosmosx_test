@@ -1,7 +1,7 @@
 <div class="one_singup_info">
 <% if (!login_success) { %>
      <!-- if (!user) { 주석 사용안됨-->
-    <h1>지금 인증안됨_login_success </h1>
+    <h3>지금 인증안됨_login_success </h3>
     <input type="button" value="가입하기" onclick="location.href='/signup';">
     <input type="button" value="로그인" onclick="location.href='/login'">
     <input type="button" value="아이디/비번찾기" onclick="location.href='main_login.html';">
@@ -36,7 +36,7 @@
         <h3 class="text-primary"><span class="fa fa-kakao"></span> kakao 프로필</h3>
             <strong>아이디</strong>: <%= user.kakao.id %><strong> / </strong>
             <strong>name</strong>: <%= user.name %><strong> / </strong>
-            <strong>nickname</strong>: <%= user.nickname %>
+            <strong>nickname</strong>: <%= user.properties.nickname %>
         </p>      
     <% } %>
 <% } %>
