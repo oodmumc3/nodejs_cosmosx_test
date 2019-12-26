@@ -95,7 +95,7 @@ var listpost = function(req, res) {
     console.log('요청 파라미터 : ' + paramPage + ', ' + paramPerPage);
     
 	var database = req.app.get('database');
-	
+
     // 데이터베이스 객체가 초기화된 경우
 	if (database.db) {
 		// 1. 글 리스트
@@ -192,12 +192,27 @@ var showpost = function(req, res) {
                 
                 return;
             }
-			
+
 			if (results) {
 				console.dir(results);
-  
+
+				// 조회수 업데이트
+				console.log('trying to update hits.');
+                
+				database.PostModel.incrViewcount(results._doc._id, function(err2, results2) {
+				console.log('incrviewcount executed.');
+									
+				if (err2) {
+					console.log('incrviewcount 실행 중 에러 발생.');
+					console.dir(err2);
+					return;
+					}
+									
+				});	
+
+			
 				res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-				
+
 				// 뷰 템플레이트를 이용하여 렌더링한 후 전송
 				var context = {
 					title: '글 조회 ',

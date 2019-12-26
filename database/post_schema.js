@@ -15,7 +15,8 @@ SchemaObj.createSchema = function(mongoose) {
 	var PostSchema = mongoose.Schema({
 	    title: {type: String, trim: true, 'default':''},		// 글 제목
 	    contents: {type: String, trim:true, 'default':''},						// 글 내용
-	    writer: {type: mongoose.Schema.ObjectId, ref: 'users6'},							// 글쓴 사람
+		writer: {type: mongoose.Schema.ObjectId, ref: 'users6'},				// 글쓴 사람
+		viewcount: {type: Number, default:0},							
 	    comments: [{		// 댓글
 	    	contents: {type: String, trim:true, 'default': ''},					// 댓글 내용
 	    	writer: {type: mongoose.Schema.ObjectId, ref: 'users6'},
@@ -78,7 +79,15 @@ SchemaObj.createSchema = function(mongoose) {
 				.limit(Number(options.perPage))
 				.skip(options.perPage * options.page)
 				.exec(callback);
-		}
+		},
+		incrViewcount: function(id, callback) {
+            var query = {_id: id};
+            var update = {$inc: {viewcount:1}};
+            var options = {upsert:true, 'new':true, setDefaultsOnInsert:true};
+            
+            this.findOneAndUpdate(query, update, options, callback);            
+        }
+
 	}
 	
 	console.log('PostSchema 정의함.');
