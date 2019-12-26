@@ -250,6 +250,53 @@ var showpost = function(req, res) {
 	
 };
 
+var addcomment = function(req, res) {
+	console.log('post 모듈 안에 있는 addcomment 호출됨.');
+ 
+    var paramId = req.body.id || req.query.id;
+    var paramContents = req.body.contents || req.query.contents;
+    var paramWriter = req.body.writer || req.query.writer;
+	
+    console.log('요청 파라미터 : ' + paramId + ', ' + paramContents + ', ' + 
+               paramWriter);
+    
+	var database = req.app.get('database');
+	
+	// 데이터베이스 객체가 초기화된 경우
+	if (database.db) {
+		
+		// 1. 아이디를 이용해 사용자 검색
+		database.PostModel.findByIdAndUpdate(paramId,
+            {'$push': {'comments':{'contents':paramContents, 'writer':paramWriter}}},
+            {'new':true, 'upsert':true},
+            function(err, results) {
+                if (err) {
+                    console.error('게시판 댓글 추가 중 에러 발생 : ' + err.stack);
+
+                    res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+                    res.write('<h2>게시판 댓글 추가 중 에러 발생</h2>');
+                    res.write('<p>' + err.stack + '</p>');
+                    res.end();
+
+                    return;
+                }
+
+                console.log("글 데이터 추가함.");
+                console.log('글 작성', '포스팅 글을 생성했습니다. : ' + paramId);
+
+                return res.redirect('/process/showpost/' + paramId); 
+        });
+ 
+	} else {
+		res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
+		res.write('<h2>데이터베이스 연결 실패</h2>');
+		res.end();
+	}
+	
+};
+
+
 module.exports.listpost = listpost;
 module.exports.addpost = addpost;
 module.exports.showpost = showpost;
+module.exports.addcomment = addcomment;
