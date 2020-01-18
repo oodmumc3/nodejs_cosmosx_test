@@ -34,7 +34,8 @@
 	// them if you want to allow only a safe subset of JavaScript, very
 	// useful when your codebase is shared with a big number of developers
 	// with different skill levels. Was all true.
-	 
+
+    "esversion": 6,
 	"bitwise" : true, // Prohibit bitwise operators (&, |, ^, etc.).
 	"curly" : true, // Require {} for every new block or scope.
 	"eqeqeq" : true, // Require triple equals i.e. `===`.
