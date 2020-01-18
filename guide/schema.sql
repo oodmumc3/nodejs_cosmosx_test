@@ -4,7 +4,7 @@ CREATE TABLE `tl_free_board` (
   `title` VARCHAR(45) NOT NULL,
   `contents` TEXT NOT NULL,
   `username` VARCHAR(45) NULL,
-  `createdAt` DATETIME NULL,
-  `updatedAt` DATETIME NULL,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NOT NULL,
   PRIMARY KEY (`id`));
 
