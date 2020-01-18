@@ -37,6 +37,7 @@ var config = require('./config/config');
 
 // 모듈로 분리한 데이터베이스 파일 불러오기
 var database = require('./database/database');
+const MysqlConfig = require('./database/mysql_config');
 
 // 모듈로 분리한 라우팅 파일 불러오기
 var route_loader = require('./routes/route_loader');
