@@ -21,6 +21,11 @@ exports.findFreeBoardListWithPaging = async (page, perPage, searchType, searchTe
     };
 };
 
+exports.findNewestTop5 = async () => {
+    const {boards} = await exports.findFreeBoardListWithPaging(1, 5, null, null);
+    return boards;
+};
+
 exports.updateById = FreeBoardDao.updateById;
 exports.findOneById = FreeBoardDao.findOneById;
 exports.deleteOneById = FreeBoardDao.deleteOneById;

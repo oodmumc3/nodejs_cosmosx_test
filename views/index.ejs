@@ -63,8 +63,14 @@
                                         <p>게시판1</p>
                                         <div class="row">
                                             <div class="main_board_one_left_1b1 col-lg-6 col-sm-12">
-                                                <p>자유게시판</p>
-                                                <input type="button" class="btn btn-secondary" value="게사판이동" onclick="location.href='/listpost.html'">
+                                                <p><a href="/free_board/index">자유게시판</a> (최신 5개)</p>
+                                                <ul class="list-group">
+                                                    <% for (const row of freeBoards) { %>
+                                                    <li class="list-group-item">
+                                                        <a href="/free_board/view/<%= row.id %>"> <%= row.title %> </a>
+                                                    </li>
+                                                    <% } %>
+                                                </ul>
                                             </div>
 
                                             <div class="main_board_one_left_1b2 col-lg-6 col-sm-12">

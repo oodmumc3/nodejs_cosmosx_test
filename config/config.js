@@ -25,6 +25,7 @@ module.exports = {
 		//,{file:'./user_schema_kakao', collection:'users_kakao', schemaName:'UserSchema_kakao', modelName:'UserModel_kakao'}
 	],
 	route_info: [
+        {file:'./index', path:'/', method:'index', type:'get'},
 		{file:'./post', path:'/process/addpost', method:'addpost', type:'post'}
         ,{file:'./post', path:'/process/showpost/:id', method:'showpost', type:'get'}
         ,{file:'./post', path:'/process/listpost', method:'listpost', type:'post'}
