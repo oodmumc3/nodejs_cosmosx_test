@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="free_board">
+    <insert id="save">
+        INSERT INTO
+            tl_free_board
+        SET
+            title = #{title},
+            contents = #{contents},
+            username = 'UNKNOWN',
+            createdAt = NOW(),
+            updatedAt = NOW()
+    </insert>
+
+    <select id="countWithSearch">
+        SELECT
+            COUNT(*) AS count
+        FROM
+            tl_free_board
+        WHERE
+            1 = 1
+            <if test="searchTerm != null and searchTerm != ''">
+                AND ${searchColumn} LIKE CONCAT('%', ${searchTerm}, '%')
+            </if>
+    </select>
+
+    <select id="findAllWithPagingAndSearch">
+        SELECT
+            id, title, contents, username, createdAt, updatedAt
+        FROM
+            tl_free_board
+        WHERE
+            1 = 1
+            <if test="searchTerm != null and searchTerm != ''">
+                AND ${searchColumn} LIKE CONCAT('%', ${searchTerm}, '%')
+            </if>
+        ORDER BY id DESC
+        LIMIT ${offset}, ${limit}
+    </select>
+
+    <select id="findOneById">
+        SELECT
+            id, title, contents, username, createdAt, updatedAt
+        FROM
+            tl_free_board
+        WHERE
+            id = #{id}
+    </select>
+
+    <update id="updateById">
+        UPDATE
+            tl_free_board
+        SET
+            title = #{title},
+            contents = #{contents},
+            updatedAt = NOW()
+        WHERE
+            id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM
+            tl_free_board
+        WHERE
+            id = #{id}
+    </delete>
+</mapper>
