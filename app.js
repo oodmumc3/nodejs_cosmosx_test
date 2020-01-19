@@ -38,6 +38,7 @@ var config = require('./config/config');
 // 모듈로 분리한 데이터베이스 파일 불러오기
 var database = require('./database/database');
 const MysqlConfig = require('./database/mysql_config');
+const FreeBoardDao = require('./dao/free_board_dao');
 
 // 모듈로 분리한 라우팅 파일 불러오기
 var route_loader = require('./routes/route_loader');
@@ -142,10 +143,11 @@ app.on('close', function () {
 });
 
 // 시작된 서버 객체를 리턴받도록 합니다. 
-var server = http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app).listen(app.get('port'), async function(){
 	console.log('서버가 시작되었습니다. 포트 : ' + app.get('port'));
 
 	// 데이터베이스 초기화
-	database.init(app, config);
-   
+	// database.init(app, config);
+    const connection = await MysqlConfig.init(config.mysql_local);
+    await FreeBoardDao.init(connection);
 });
