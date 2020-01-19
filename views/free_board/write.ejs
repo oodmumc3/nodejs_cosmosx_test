@@ -8,7 +8,8 @@
         $(function () {
             $('#submitBtn').click(function (e) {
                 var title = $('#title').val();
-                var contents = $('#contents').val();
+                // var contents = $('#contents').val();
+                var contents = CKEDITOR.instances.contents.getData();
 
                 if (!title) {
                     alert('제목을 입력해주세요');
@@ -22,6 +23,8 @@
 
                 $('#form').submit();
             });
+
+            CKEDITOR.replace('contents');
         });
     </script>
 </head>
