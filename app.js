@@ -148,6 +148,6 @@ var server = http.createServer(app).listen(app.get('port'), async function(){
 
 	// 데이터베이스 초기화
 	// database.init(app, config);
-    const connection = await MysqlConfig.init(config.mysql_local);
+    const connection = await MysqlConfig.init(config.mysql);
     await FreeBoardDao.init(connection);
 });
